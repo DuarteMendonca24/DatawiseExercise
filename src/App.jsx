@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import './App.css'
+import './style.css'
 import Login from './Login'
 import Profile from './Profile';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import './style.css'
+
 
 function App () {
   const[users,setUsers] = useState ([])
