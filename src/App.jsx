@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import Login from './Login'
+import Profile from './Profile';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 function App () {
   const[users,setUsers] = useState ([])
@@ -43,20 +45,32 @@ function App () {
       if (user.password === password) {
         console.log('Login successful!');
         getPosts(user.id)
+        return { firstName: user.firstName, lastName: user.lastName };
       
       } else {
         console.log('Incorrect password');
+       
         
       }
     } else {
       console.log('User not found');
+      
     }
+
+    return false
   }
 
 
   return (
     <>
-      <Login verifyLogin={verifyLogin}></Login>
+      
+      <Router>
+      <Routes>
+        {/* Conditional rendering based on login status */}
+        <Route path="/" element={<Login verifyLogin={verifyLogin} />} />
+        <Route path="/profile" element={<Profile posts={posts} />} />
+      </Routes>
+     </Router>
     </>
   )
 }

@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function Login({verifyLogin}) {
 
   const[username,setUsername] = useState("")
   const[password,setPassword] = useState("")
+  const navigate = useNavigate();
 
   function handleLogin(e){
     e.preventDefault()
-    verifyLogin(username,password)
+    const user = verifyLogin(username, password);
+    if (user) {
+    navigate("/profile", { state: { firstName: user.firstName, lastName: user.lastName } });
+    }
   }
 
   return (
