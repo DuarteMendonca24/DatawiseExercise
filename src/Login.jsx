@@ -16,17 +16,25 @@ export default function Login({verifyLogin}) {
   }
 
   return (
-    <>
+    <div className='container'>
       <form onSubmit={handleLogin}>
-        <div>
-          <label>Email</label>
-          <input type="email" value={username} onChange={e => setUsername(e.target.value)}></input>
+        <div className="login-wrapper">
+        
+          <div className="input-group">
+            <label>Email</label>
+            <input type="email" value={username} onChange={e => setUsername(e.target.value)} />
+          </div>
+
+          <div className="input-group">
+            <label>Password</label>
+            <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+          </div>
+
+          <button className="login-button">Login</button>
           
-          <label>Password</label>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)}></input>
         </div>
-        <button>Login</button>
       </form>
-    </>
+
+    </div>
   )
 }
