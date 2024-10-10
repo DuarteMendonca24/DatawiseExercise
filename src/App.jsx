@@ -3,6 +3,7 @@ import './App.css'
 import Login from './Login'
 import Profile from './Profile';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import './style.css'
 
 function App () {
   const[users,setUsers] = useState ([])

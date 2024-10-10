@@ -10,16 +10,27 @@ export default function Profile({posts}) {
 
   return (
     <>
-      <h1>{firstName} {lastName}'s Posts</h1>
-      <ul>
-        {sortedPosts.map((post) => (
-          <li key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.text}</p>
-            <small>Posted  on {new Date(post.postedAt).toLocaleString()}</small>
-          </li>
-        ))}
-      </ul>
+      <div className='header'>
+        <h1 className='header-name'>{firstName} {lastName}'s Posts</h1>
+      </div>
+      
+      {sortedPosts.map((post) => (
+        <div key={post.id} className="posts">
+          <div className="post-wrap">
+            
+            <div className="post-info">
+              <span className="post-name">{firstName} {lastName}</span>
+              <small className="post-date">{new Date(post.postedAt).toLocaleString()}</small>
+            </div>
+
+            <div className="post-title">{post.title}</div>
+            <p className="post-text">{post.text}</p>
+
+          </div>
+        </div>
+      ))}
+
+      
 
     </>
   )
