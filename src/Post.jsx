@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Post({firstName,lastName,postedAt,title,text}) {
+export default function Post({id,firstName,lastName,postedAt,title,text, deletePost}) {
   return (
     <>
       <div className="posts">
@@ -13,7 +13,7 @@ export default function Post({firstName,lastName,postedAt,title,text}) {
 
             <div className="post-title">{title}</div>
             <p className="post-text">{text}</p>
-            <button>Delete</button>
+            <button onClick={()=>deletePost(id)}>Delete</button>
           </div>
         </div>
     </>

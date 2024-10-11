@@ -11,7 +11,8 @@ export default function Login({verifyLogin}) {
     e.preventDefault()
     const user = verifyLogin(username, password);
     if (user) {
-    navigate("/profile", { state: { firstName: user.firstName, lastName: user.lastName } });
+     
+      navigate("/profile", { state: { firstName: user.firstName, lastName: user.lastName , userId: user.userId } });
     }
   }
 
