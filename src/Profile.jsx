@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
+import Post from './Post';
 
 export default function Profile({posts}) {
   const location = useLocation();
@@ -14,24 +15,13 @@ export default function Profile({posts}) {
         <h1 className='header-name'>{firstName} {lastName}'s Posts</h1>
       </div>
       
-      {sortedPosts.map((post) => (
-        <div key={post.id} className="posts">
-          <div className="post-wrap">
-            
-            <div className="post-info">
-              <span className="post-name">{firstName} {lastName}</span>
-              <small className="post-date">{new Date(post.postedAt).toLocaleString()}</small>
-            </div>
-
-            <div className="post-title">{post.title}</div>
-            <p className="post-text">{post.text}</p>
-
-          </div>
-        </div>
-      ))}
-
-      
-
+      {sortedPosts.map((post) => {
+        
+        return(
+        <Post key={post.id} {...post} firstName={firstName} lastName = {lastName}></Post>
+        )
+        
+      })}
     </>
   )
 }
