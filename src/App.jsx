@@ -7,7 +7,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 function App () {
   const[users,setUsers] = useState ([])
-  const[posts,setPosts] = useState ([])
+  const[posts,setPosts] = useState (()=>{
+    const localValue = localStorage.getItem("POSTS")
+    if(localValue === null) return []
+    
+    return JSON.parse(localValue)
+  })
 
   async function getUsers(){
     try {
@@ -33,6 +38,10 @@ function App () {
       console.error('Error fetching data:', error);
     }
   }
+
+  useEffect(()=>{
+    localStorage.setItem("POSTS",JSON.stringify(posts))
+  },[posts])
   
   console.log(posts)
 
