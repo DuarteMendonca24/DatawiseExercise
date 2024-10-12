@@ -16,7 +16,11 @@ export default function Profile({posts , deletePost , addPost , updatePost}) {
     const trimTitle = title.trim()
     const trimDescription = description.trim()
 
-    if(trimTitle && trimDescription) addPost(title,description,userId)
+    if(trimTitle && trimDescription){
+      addPost(title,description,userId) 
+      setTitle('')
+      setDescription('')
+    } 
     else alert('Information missing')
   }
 
