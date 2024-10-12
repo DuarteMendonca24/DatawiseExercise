@@ -10,10 +10,10 @@ function App () {
   const[posts,setPosts] = useState (()=>{
     const localValue = localStorage.getItem("POSTS")
     if(localValue === null) return []
-    
     return JSON.parse(localValue)
   })
 
+  //function to get the users from json database
   async function getUsers(){
     try {
       const response = await fetch("http://localhost:5000/users");
@@ -29,6 +29,7 @@ function App () {
     getUsers()
   },[])
 
+  //function to get posts based on the user id
   async function getPosts(id){
     try {
       const response = await fetch(`http://localhost:5000/posts?userId=${id}`);
@@ -39,11 +40,11 @@ function App () {
     }
   }
 
+  //hook to save the user posts in local storage,allowing page refresh
   useEffect(()=>{
     localStorage.setItem("POSTS",JSON.stringify(posts))
   },[posts])
   
-  console.log(posts)
 
   // Function to handle login verification
   function verifyLogin(username , password) {
@@ -60,28 +61,24 @@ function App () {
       
       } else {
         console.log('Incorrect password');
-       
-        
+        alert('Incorrect password');
       }
     } else {
       console.log('User not found');
-      
+      alert('User not found');
     }
 
     return false
   }
 
- // Function to delete a post from both the state and the server
+  // Function to delete a post from both the state and the server
   async function deletePost(id) {
     try {
-      // Send DELETE request to the JSON server
       const response = await fetch(`http://localhost:5000/posts/${id}`, {
         method: 'DELETE',
       });
 
-      // If deletion is successful, update the local state
       if (response.ok) {
-        // Remove post from state
         setPosts(posts => posts.filter(post => post.id !== id));
       } else {
         console.error('Failed to delete post from server');
@@ -91,6 +88,7 @@ function App () {
     }
   }
 
+  //Function to add a post to the state and the server
   async function addPost(title,description,userId){
     console.log(userId)
     const newPost = {
@@ -102,19 +100,16 @@ function App () {
     };
     
     try {
-      // Send POST request to add the new post to the JSON server
       const response = await fetch('http://localhost:5000/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newPost),  // Convert newPost object to JSON format
+        body: JSON.stringify(newPost),
       });
   
-      // Check if the response is successful
       if (response.ok) {
         const createdPost = await response.json();
-        // Update the posts state with the new post
         setPosts((posts) => [...posts, createdPost]);
       } else {
         console.error('Failed to add post to server');
@@ -125,6 +120,7 @@ function App () {
 
   }
 
+  //Function to update post based on the edit information
   async function updatePost(id, editedTitle, editedText) {
     const updatedPost = {
       title: editedTitle,
@@ -142,7 +138,6 @@ function App () {
   
       if (response.ok) {
         const updatedPostFromServer = await response.json();
-        // Update the post in state
         setPosts((posts) =>
           posts.map((post) => (post.id === id ? updatedPostFromServer : post))
         );
@@ -154,13 +149,10 @@ function App () {
     }
   }
   
-
   return (
     <>
-      
       <Router>
       <Routes>
-        {/* Conditional rendering based on login status */}
         <Route path="/" element={<Login verifyLogin={verifyLogin} />} />
         <Route path="/profile" element={<Profile posts={posts} deletePost={deletePost} addPost={addPost} updatePost={updatePost} />} />
       </Routes>

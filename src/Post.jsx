@@ -5,10 +5,12 @@ export default function Post({id,firstName,lastName,postedAt,title,text, deleteP
   const[editedTitle,setEditedTitle] = useState(title)
   const[editedText,setEditedText] = useState(text)
   
+  //Funtion that allows to enter and exit exit mode
   function toggleEdit(){
     setIsEditing(!isEditing)
   }
 
+  //Funtion to handle saving the edit information
   function handleSave(){
     updatePost(id,editedTitle,editedText)
     setIsEditing(false)
@@ -39,34 +41,23 @@ export default function Post({id,firstName,lastName,postedAt,title,text, deleteP
 
             ) : (
               <>
-               <div > 
-              
-                <input className='post-title' type="text" value={editedTitle} onChange={e => setEditedTitle(e.target.value)} />
-              </div>
+                <div > 
+                  <input className='post-title' type="text" value={editedTitle} onChange={e => setEditedTitle(e.target.value)} />
+                </div>
 
                 <div >
-            
-                <input className='post-text' type="text" value={editedText} onChange={e => setEditedText(e.target.value)} />
-              </div>
+                  <input className='post-text' type="text" value={editedText} onChange={e => setEditedText(e.target.value)} />
+                </div>
 
-              <div className="post-buttons">
-                <button onClick={handleSave}>Save</button>
-                <button onClick={toggleEdit}>Cancel</button>
-              </div>
-           
-              
+                <div className="post-buttons">
+                  <button onClick={handleSave}>Save</button>
+                  <button onClick={toggleEdit}>Cancel</button>
+                </div>
+          
               </>
                
-
-
-
-
-
             )}
-             
-           
 
-            
           </div>
         </div>
     </>

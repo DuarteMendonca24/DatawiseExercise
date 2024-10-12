@@ -6,13 +6,18 @@ export default function Profile({posts , deletePost , addPost , updatePost}) {
   const location = useLocation();
   const { firstName, lastName , userId} = location.state 
   const sortedPosts = [...posts].sort((a, b) => new Date(b.postedAt) - new Date(a.postedAt));  // Sort the posts by date
-  const[title,setTitle] = useState([])
-  const[description,setDescription] = useState([])
+  const[title,setTitle] = useState('')
+  const[description,setDescription] = useState('')
 
+  //Funtion to hanlde the add post form
   function handleAdd(e){
     e.preventDefault()
-    console.log("UserID is" + userId)
-    addPost(title,description,userId)
+    //Trim method to remove whitespace
+    const trimTitle = title.trim()
+    const trimDescription = description.trim()
+
+    if(trimTitle && trimDescription) addPost(title,description,userId)
+    else alert('Information missing')
   }
 
   return (
@@ -22,31 +27,25 @@ export default function Profile({posts , deletePost , addPost , updatePost}) {
       </div>
 
       <div className='formContainer'>
-      <form className="addForm" onSubmit={handleAdd}>
-        <div>
-          <label>Title</label>
-          <input type="text" value={title} onChange={e => setTitle(e.target.value)}></input>
-        </div>
+        <form className="addForm" onSubmit={handleAdd}>
+          <div>
+            <label>Title</label>
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)}></input>
+          </div>
 
-        <div>
-          <label>Description</label>
-          <input type="text" value={description} onChange={e => setDescription(e.target.value)}></input>
-        </div>
+          <div>
+            <label>Description</label>
+            <input type="text" value={description} onChange={e => setDescription(e.target.value)}></input>
+          </div>
 
-        <button>Add</button>
-      </form>
-    
-
-
+          <button>Add</button>
+        </form>
       </div>
       
-      
       {sortedPosts.map((post) => {
-
         return(
         <Post key={post.id} {...post} firstName={firstName} lastName = {lastName} deletePost={deletePost} updatePost={updatePost}></Post>
         )
-        
       })}
     </>
   )

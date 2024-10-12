@@ -7,11 +7,12 @@ export default function Login({verifyLogin}) {
   const[password,setPassword] = useState("")
   const navigate = useNavigate();
 
+  //Funtion to handle login, verifies the information and naviagtes to the profile page of the user
   function handleLogin(e){
     e.preventDefault()
     const user = verifyLogin(username, password);
     if (user) {
-     
+      //state parameter allows  to pass additional information to the destination route
       navigate("/profile", { state: { firstName: user.firstName, lastName: user.lastName , userId: user.userId } });
     }
   }

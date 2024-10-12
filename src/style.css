@@ -60,15 +60,10 @@ body {
   line-height: 1.5;
 }
 
-
-
-
 .post-text{
   font-size: 14px;
   line-height: 0.5;
 }
-
-
 
 .post-buttons{
   display: flex;
@@ -79,7 +74,7 @@ body {
 }
 
 .post-buttons button {
-  background-color: #f0f0f0; /* Soft grey */
+  background-color: #f0f0f0; 
   border: none;
   border-radius: 3px;
   padding: 8px 12px;
@@ -90,7 +85,7 @@ body {
 }
 
 .post-buttons button:hover {
-  background-color: #e0e0e0; /* Slightly darker grey on hover */
+  background-color: #e0e0e0; 
 }
 
 .formContainer{
@@ -100,6 +95,7 @@ body {
   align-items: center;
   padding: 20px;
 }
+
 .addForm{
   display: flex;
   flex-direction: column;
@@ -111,7 +107,7 @@ body {
 }
 
 .addForm button{
-  background-color: #f0f0f0; /* Soft grey */
+  background-color: #f0f0f0; 
   border: none;
   border-radius: 3px;
   padding: 8px 12px;
@@ -123,18 +119,16 @@ body {
 }
 
 .addForm button:hover {
-  background-color: #e0e0e0; /* Slightly darker grey on hover */
+  background-color: #e0e0e0; 
 }
-
-
 
 /*********************Login**************/
 
 .container {
-  display: flex;            /* Use flexbox for centering */
-  justify-content: center;  /* Center horizontally */
-  align-items: center;      /* Center vertically */
-  height: 100vh;           /* Full height of viewport */
+  display: flex;            
+  justify-content: center;  
+  align-items: center;      
+  height: 100vh;           
 }
 
 
@@ -149,7 +143,6 @@ body {
   align-items: center;
 }
 
-/* Input Group */
 .input-group {
 
   margin-bottom: 20px;
