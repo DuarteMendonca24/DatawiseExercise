@@ -125,6 +125,36 @@ function App () {
 
   }
 
+  async function updatePost(id, editedTitle, editedText) {
+    const updatedPost = {
+      title: editedTitle,
+      text: editedText,
+      postedAt: new Date().toISOString(), // Update the post date if needed
+    };
+  
+    try {
+      const response = await fetch(`http://localhost:5000/posts/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedPost),
+      });
+  
+      if (response.ok) {
+        const updatedPostFromServer = await response.json();
+        // Update the post in state
+        setPosts((posts) =>
+          posts.map((post) => (post.id === id ? updatedPostFromServer : post))
+        );
+      } else {
+        console.error('Failed to update post');
+      }
+    } catch (error) {
+      console.error('Error updating post:', error);
+    }
+  }
+  
 
   return (
     <>
@@ -133,7 +163,7 @@ function App () {
       <Routes>
         {/* Conditional rendering based on login status */}
         <Route path="/" element={<Login verifyLogin={verifyLogin} />} />
-        <Route path="/profile" element={<Profile posts={posts} deletePost={deletePost} addPost={addPost} />} />
+        <Route path="/profile" element={<Profile posts={posts} deletePost={deletePost} addPost={addPost} updatePost={updatePost} />} />
       </Routes>
      </Router>
     </>

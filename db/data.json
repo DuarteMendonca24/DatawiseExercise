@@ -24,16 +24,9 @@
   ],
   "posts": [
     {
-      "userId": "1",
-      "postedAt": "2024-03-22T14:00:00",
-      "title": "Health and Wellness",
-      "text": "Sharing some personal tips for staying healthy.",
-      "id": "c463"
-    },
-    {
       "userId": "2",
-      "postedAt": "2024-03-22T14:00:00",
-      "title": "Health and Wellness",
+      "postedAt": "2024-10-12T14:25:13.509Z",
+      "title": "Health and Wellness for begginers",
       "text": "Sharing some personal tips for staying healthy.",
       "id": "c463"
     },
@@ -66,11 +59,11 @@
       "id": "1af0"
     },
     {
-      "id": "4ecebb99-419b-409a-90b2-bb8b06e3f375",
       "userId": "1",
-      "postedAt": "2024-10-11T23:26:03.097Z",
-      "title": "Coding tips",
-      "text": "Code with your eyes closed"
+      "title": "New Code with your eyes closed",
+      "text": "New Coding tips, some text here",
+      "postedAt": "2024-10-12T14:25:51.576Z",
+      "id": "4ecebb99-419b-409a-90b2-bb8b06e3f375"
     }
   ]
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import Post from './Post';
 
-export default function Profile({posts , deletePost , addPost}) {
+export default function Profile({posts , deletePost , addPost , updatePost}) {
   const location = useLocation();
   const { firstName, lastName , userId} = location.state 
   const sortedPosts = [...posts].sort((a, b) => new Date(b.postedAt) - new Date(a.postedAt));  // Sort the posts by date
@@ -39,7 +39,7 @@ export default function Profile({posts , deletePost , addPost}) {
       {sortedPosts.map((post) => {
 
         return(
-        <Post key={post.id} {...post} firstName={firstName} lastName = {lastName} deletePost={deletePost}></Post>
+        <Post key={post.id} {...post} firstName={firstName} lastName = {lastName} deletePost={deletePost} updatePost={updatePost}></Post>
         )
         
       })}
