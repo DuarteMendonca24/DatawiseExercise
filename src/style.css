@@ -4,6 +4,8 @@ body {
 }
 
 
+/*********************Profile**************/
+
 
 .header {
   background-color: #ffffff; 
@@ -58,10 +60,73 @@ body {
   line-height: 1.5;
 }
 
-.post-text {
+
+
+
+.post-text{
   font-size: 14px;
   line-height: 0.5;
 }
+
+
+
+.post-buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+
+}
+
+.post-buttons button {
+  background-color: #f0f0f0; /* Soft grey */
+  border: none;
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #333;
+}
+
+.post-buttons button:hover {
+  background-color: #e0e0e0; /* Slightly darker grey on hover */
+}
+
+.formContainer{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.addForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  padding: 8px;
+  border-radius: 3px;
+  width: 505px;
+}
+
+.addForm button{
+  background-color: #f0f0f0; /* Soft grey */
+  border: none;
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #333;
+  margin-top: 10px;
+}
+
+.addForm button:hover {
+  background-color: #e0e0e0; /* Slightly darker grey on hover */
+}
+
+
 
 /*********************Login**************/
 

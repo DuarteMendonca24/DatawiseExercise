@@ -129,7 +129,6 @@ function App () {
     const updatedPost = {
       title: editedTitle,
       text: editedText,
-      postedAt: new Date().toISOString(), // Update the post date if needed
     };
   
     try {

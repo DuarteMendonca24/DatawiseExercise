@@ -27,27 +27,33 @@ export default function Post({id,firstName,lastName,postedAt,title,text, deleteP
             {!isEditing ? (
 
               <>
-              <div className="post-title">{title}</div>
-              <p className="post-text">{text}</p>
-                <button onClick={()=>deletePost(id)}>Delete</button>
-                <button onClick={toggleEdit}>Edit</button>
-
+                <div className="post-title">{title}</div>
+                <p className="post-text">{text}</p>
+                
+                <div className='post-buttons'>
+                  <button onClick={toggleEdit}>Edit</button>
+                  <button onClick={()=>deletePost(id)}>Delete</button>
+                </div>
+             
               </>
 
             ) : (
               <>
-               <div>
+               <div > 
               
-                <input type="text" value={editedTitle} onChange={e => setEditedTitle(e.target.value)} />
+                <input className='post-title' type="text" value={editedTitle} onChange={e => setEditedTitle(e.target.value)} />
               </div>
 
-                <div>
+                <div >
             
-                <input type="text" value={editedText} onChange={e => setEditedText(e.target.value)} />
+                <input className='post-text' type="text" value={editedText} onChange={e => setEditedText(e.target.value)} />
               </div>
 
-              <button onClick={toggleEdit}>Cancel</button>
-              <button onClick={handleSave}>Save</button>
+              <div className="post-buttons">
+                <button onClick={handleSave}>Save</button>
+                <button onClick={toggleEdit}>Cancel</button>
+              </div>
+           
               
               </>
                

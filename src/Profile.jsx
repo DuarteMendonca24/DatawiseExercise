@@ -21,7 +21,8 @@ export default function Profile({posts , deletePost , addPost , updatePost}) {
         <h1 className='header-name'>{firstName} {lastName}'s Posts</h1>
       </div>
 
-      <form onSubmit={handleAdd}>
+      <div className='formContainer'>
+      <form className="addForm" onSubmit={handleAdd}>
         <div>
           <label>Title</label>
           <input type="text" value={title} onChange={e => setTitle(e.target.value)}></input>
@@ -35,6 +36,10 @@ export default function Profile({posts , deletePost , addPost , updatePost}) {
         <button>Add</button>
       </form>
     
+
+
+      </div>
+      
       
       {sortedPosts.map((post) => {
 
